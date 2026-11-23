@@ -5,7 +5,7 @@ A custom Caddy image that adds two modules:
 * `github.com/caddy-dns/cloudflare` (DNS challenge provider)
 * `github.com/caddyserver/replace-response` (response body rewriting)
 
-Images are published to `ghcr.io/<owner>/<repo>` for `linux/amd64` and `linux/arm64`.
+Images are published to `ghcr.io/<owner>/caddy` for `linux/amd64`, `linux/arm/v6`, `linux/arm/v7`, `linux/arm64`, `linux/ppc64le` and `linux/riscv64`.
 
 ## Tags
 
@@ -23,7 +23,7 @@ Plugin versions are not pinned, so each build uses the latest release of both mo
 docker run -d -p 80:80 -p 443:443 \
   -e CF_API_TOKEN=... \
   -v $PWD/Caddyfile:/etc/caddy/Caddyfile \
-  ghcr.io/<owner>/<repo>:latest
+  ghcr.io/<owner>/caddy:latest
 ```
 
 Example Caddyfile snippet using the Cloudflare DNS challenge:
@@ -40,5 +40,5 @@ example.com {
 ## Verify the modules
 
 ```
-docker run --rm ghcr.io/<owner>/<repo>:latest caddy list-modules | grep -E 'cloudflare|replace'
+docker run --rm ghcr.io/<owner>/caddy:latest caddy list-modules | grep -E 'cloudflare|replace'
 ```
